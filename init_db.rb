@@ -2,7 +2,7 @@ require 'dotenv/load'
 require 'pg'
 require 'pry'
 
-class Database
+class ConnectDb
  def connection
   @connection ||= PG.connect(
     host: ENV['DB_HOST'],
@@ -42,7 +42,7 @@ class App
  end
 end
 
-db = Database.new
+db = ConnectDb.new
 db.create_db
 db.fill_db
 
